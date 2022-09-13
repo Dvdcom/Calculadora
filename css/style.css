@@ -39,7 +39,7 @@ footer{
 #EscritorioFondo{
     width: 100%;
     height: 100%;
-    background-image: url(/img/Escritorio.jpg);
+    background-image: url(/Calculadora/img/Escritorio.jpg);
     background-size:cover;
     background-position:right;
     background-repeat:no-repeat;
