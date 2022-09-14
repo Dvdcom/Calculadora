@@ -1,6 +1,7 @@
 /* tecla que ingresa */
 let ingreso = "";
 let resultado = 0;
+let seDioResultado =false;
 let numeros = new Array();
 
 const pantalla = document.querySelector('#in-resultado');
@@ -25,19 +26,16 @@ function asignar(x,y){
     }
     /* si presiona codigo de operacion ( + - * / ) */
     if(x == '+' || x == '-' || x == '*' || x == '/'){
-        console.log(resultado);
-        if(resultado > 0 ){ 
-            numeros.push(resultado);
-        }else{
-            numeros.push(parseInt(ingreso));}
-
         
+        /* consulto si tengo o no un resultado anterior dado */
+        if (!seDioResultado){numeros.push(parseInt(pantalla.value));}
         /* RESETEO A NADA LA VARIABLE INGRESO */
         ingreso = "";
         /* MUESTRO EN PANTALLA LA OPERACION QUE QUIERO REALIZAR  */
         pantalla.value = x;
         /* GUARDO EN EL ARREGLO NUMEROS COMO UN STRING */
         numeros.push(String(x));
+        seDioResultado = false
     }
 
     /* si presiona el = o enter indicando que quiero un resultado */
@@ -57,6 +55,7 @@ function asignar(x,y){
             /* SOLO VA A ENTRAR EN ESTE IF CUANDO EL PRIMER NUMERO Y EL SEGUNDO NUMERO SE INGRESEN (ES DECIR PARA ESTE ENTONCES LAS 3 PRIMERAS POSICIONES SE LLENARON) */
             if(operacion[0] > 0  && operacion[2] > 0){
 
+            /* console.log de testeo */
             /* console.log('num1 es = ' + operacion[0] + ' num2 es = ' + operacion[2] + ' codOperacion es = ' + operacion[1]); */
 
             /* REALIZO LA OPERACION ENTREGANDO TODO LOS 3 DATOS */
@@ -75,21 +74,24 @@ function asignar(x,y){
                 break;
                 }
 
-/*                 if(numeros.length>3){
+                if(numeros.length>3){
                     operacion = [];
                     operacion.push(resultado)
-
-                    } */
+                    }
                 }
         });
+        /* doy un resultado en pantalla y cambio el boolean a verdadero */
             pantalla.value = resultado;
+            seDioResultado = true;
         };
 
+        /* cuando se preciona la tecla BORRAR */
         if(y == 8){
             pantalla.value = "";
             ingreso = "";
             numeros = [];
             resultado = "";
+            seDioResultado = false;
         }
 }
     
