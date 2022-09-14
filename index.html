@@ -68,7 +68,7 @@
                         <div class="div10"><button type="button" class="btn number" onclick = "simulaIngreso(4,100)">4</button></div>
                         <div class="div11"><button type="button" class="btn number" onclick = "simulaIngreso(5,101)">5</button></div>
                         <div class="div12"><button type="button" class="btn number" onclick = "simulaIngreso(6,102)">6</button></div>
-                        <div class="div13"><button type="button" class="btn" onclick = "simulaIngreso('Backspace',8)"></button>>AC</button></div>
+                        <div class="div13"><button type="button" class="btn" onclick = "simulaIngreso('Backspace',8)">AC</button></div>
                         <div class="div14"><button type="button" class="btn number" onclick = "simulaIngreso(7,103)">7</button></div>
                         <div class="div15"><button type="button" class="btn number" onclick = "simulaIngreso(8,104)">8</button></div>
                         <div class="div16"><button type="button" class="btn number" onclick = "simulaIngreso(9,105)">9</button></div>
