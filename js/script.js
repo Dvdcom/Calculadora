@@ -1,4 +1,4 @@
-/* tecla que ingresa */
+/* variables principales */
 let ingreso = "";
 let resultado = 0;
 let seDioResultado =false;
@@ -10,13 +10,14 @@ document.addEventListener('keydown', (event) => {
     var keyValue = event.key;
     var codeValue = event.keyCode;
 
-    /* console.log(codeValue); */
+    console.log(codeValue + " " + keyValue);
     if ( codeValue == 8 || codeValue >= 48 && codeValue <= 57 || codeValue >= 96 && codeValue <= 107 || codeValue >= 109 && codeValue <= 111 || codeValue == 13 || codeValue == 187 || codeValue == 190 ){
         asignar(keyValue,codeValue);
     }
 
 }, false);
 
+/* Calculadora basada en ingreso de teclado */
 function asignar(x,y){
     /* si presiona un numero */
     if(y >= 48 && y <= 57 || y >= 96 && y <= 105 || y == 110){
@@ -112,4 +113,8 @@ function division(num1,num2){
 
 function esImpar(x){
     return (x%2==0) ? true : false;
+}
+
+function simulaIngreso(tecla,codigo){
+    asignar(tecla,codigo);
 }

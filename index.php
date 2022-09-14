@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header></header>
@@ -56,24 +56,24 @@
                 </div>
                 <div class="version-mobile">
                     <div class="botones-mobile">
-                        <div class="div1"><button type="button" class="btn">=</button></div>
-                        <div class="div2"><button type="button" class="btn">+</button></div>
-                        <div class="div3"><button type="button" class="btn">-</button></div>
-                        <div class="div4"><button type="button" class="btn">/</button></div>
-                        <div class="div5"><button type="button" class="btn">*</button></div>
-                        <div class="div6"><button type="button" class="btn number">1</button></div>
-                        <div class="div7"><button type="button" class="btn number">2</button></div>
-                        <div class="div8"><button type="button" class="btn number">3</button></div>
+                        <div class="div1"><button type="button" class="btn" onclick = "simulaIngreso('Enter',13)">=</button></div>
+                        <div class="div2"><button type="button" class="btn" onclick = "simulaIngreso('+',107)">+</button></div>
+                        <div class="div3"><button type="button" class="btn" onclick = "simulaIngreso('-',109)">-</button></div>
+                        <div class="div4"><button type="button" class="btn" onclick = "simulaIngreso('/',111)">/</button></div>
+                        <div class="div5"><button type="button" class="btn" onclick = "simulaIngreso('*',106)">*</button></div>
+                        <div class="div6"><button type="button" class="btn number" onclick = "simulaIngreso(1,97)">1</button></div>
+                        <div class="div7"><button type="button" class="btn number" onclick = "simulaIngreso(2,98)">2</button></div>
+                        <div class="div8"><button type="button" class="btn number" onclick = "simulaIngreso(3,99)">3</button></div>
                         <div class="div9"><button type="button" class="btn">²√</button></div>
-                        <div class="div10"><button type="button" class="btn number">4</button></div>
-                        <div class="div11"><button type="button" class="btn number">5</button></div>
-                        <div class="div12"><button type="button" class="btn number">6</button></div>
-                        <div class="div13"><button type="button" class="btn">AC</button></div>
-                        <div class="div14"><button type="button" class="btn number">7</button></div>
-                        <div class="div15"><button type="button" class="btn number">8</button></div>
-                        <div class="div16"><button type="button" class="btn number">9</button></div>
+                        <div class="div10"><button type="button" class="btn number" onclick = "simulaIngreso(4,100)">4</button></div>
+                        <div class="div11"><button type="button" class="btn number" onclick = "simulaIngreso(5,101)">5</button></div>
+                        <div class="div12"><button type="button" class="btn number" onclick = "simulaIngreso(6,102)">6</button></div>
+                        <div class="div13"><button type="button" class="btn" onclick = "simulaIngreso('Backspace',8)"></button>>AC</button></div>
+                        <div class="div14"><button type="button" class="btn number" onclick = "simulaIngreso(7,103)">7</button></div>
+                        <div class="div15"><button type="button" class="btn number" onclick = "simulaIngreso(8,104)">8</button></div>
+                        <div class="div16"><button type="button" class="btn number" onclick = "simulaIngreso(9,105)">9</button></div>
                         <div class="div17"><button type="button" class="btn">.</button></div>
-                        <div class="div18"><button type="button" class="btn number">0</button></div>
+                        <div class="div18"><button type="button" class="btn number" onclick = "simulaIngreso(0,96)">0</button></div>
                         <div class="div19"><button type="button" class="btn">%</button></div>
                         </div>
                 </div>
@@ -87,5 +87,6 @@
     </footer>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
