@@ -97,7 +97,7 @@ function asignar(x, y) {
 }
 
 
-/* crear la operacion */
+/* crear la operacion funciones flecha*/
 function suma(num1, num2) {
     return num1 + num2;
 }
