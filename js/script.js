@@ -3,6 +3,8 @@ let ingreso = "";
 let arrayIngreso = [];
 const separacion = ['(',')','+','-','*','/','%','sin','cos','Enter','=','tg'];
 let numeros = [];
+const fMatematicasUbicaciones = ['+','-','*','/',];
+let resultado;
 
 const pantalla = document.querySelector('#in-resultado');
 
@@ -18,10 +20,8 @@ document.addEventListener('keydown', (event) => {
         pantalla.value = ingreso;
 
     }else if(codeValue == 13 || (codeValue == 187 && keyValue == '=')){
-        
         arrayIngreso.push(keyValue);
         separarYasignar(arrayIngreso);
-    }else{
         
     }
     
@@ -29,7 +29,7 @@ document.addEventListener('keydown', (event) => {
 
 /* Calculadora basada en ingreso de teclado */
 function separarYasignar() {
-console.log(arrayIngreso);
+
 var numeroConcatenado = "";
 
     arrayIngreso.forEach((element,index) => {
@@ -39,11 +39,10 @@ var numeroConcatenado = "";
         }
         if(separacion.indexOf(element)>0){
             if(index == 0){
-                console.log('ingreso por aca')
                 numeros.push(element);
             }
             if (index != 0){
-                numeros.push(numeroConcatenado);
+                numeros.push(parseInt(numeroConcatenado));
                 numeroConcatenado = "";
                 numeros.push(element);
                 vaciarInput();
@@ -52,20 +51,55 @@ var numeroConcatenado = "";
 
     });
     operar(numeros);
-    console.log(numeros);
 }
 
-let resultado;
 function operar(){
 
-    funcionesMatematicas.forEach((funcion,index) => {
-        if(index == operacion){
-            varRespuesta = funcion(var1,var2);
+    var i;
+    var num1 = 0;
+    var num2 = 0;
+    var operador;
+
+    numeros.forEach(element => {
+        if(separacion.includes(element) && element != 'Enter'){
+            operador = element
+        }else{
+            if(num1 == 0){
+                num1 = element;
+            }else if(num1 != 0 && num2 == 0 ){
+                num2 = element;
+            }
         }
+
     });
 
+    fMatematicasUbicaciones.forEach((ele,index) => {
+
+        if(operador == ele){
+
+            i = index
+            funcionesMatematicas.forEach((funciones,index) => {
+                if (i == index){
+                    resultado =  funciones(num1,num2);
+                }
+            });
+            
+        }
+    });
+    darResultado(resultado);
 }
 /* Array de funciones */
+function darResultado(solucion){
+    pantalla.value = solucion;
+    numeros = [];
+    ingreso = solucion;
+    arrayIngreso = [];
+
+    for (let i = 0; i < solucion.length; i++) {
+        arrayIngreso.push(solucion[i]);
+    }
+    
+}
 
 const funcionesMatematicas = [
     /* Operaciones basicas */
@@ -74,13 +108,6 @@ const funcionesMatematicas = [
     (num1,num2) => num1 * num2,
     (num1,num2) => num1 / num2,
 ];
-
-/* funcionesMatematicas.forEach((funcion,index) => {
-    if(index == operacion){
-        varRespuesta = funcion(var1,var2);
-    }
-}); */
-
 
 function vaciarInput(){
     pantalla.value = "";
