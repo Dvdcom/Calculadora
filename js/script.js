@@ -1,5 +1,8 @@
 /* variables principales */
 let ingreso = "";
+let arrayIngreso = [];
+const separacion = ['(',')','+','-','*','/','%','sin','cos','Enter','=','tg'];
+let numeros = [];
 
 const pantalla = document.querySelector('#in-resultado');
 
@@ -7,23 +10,61 @@ document.addEventListener('keydown', (event) => {
     var keyValue = event.key;
     var codeValue = event.keyCode;
 
-    console.log(codeValue + " " + keyValue);
-    if (codeValue == 8 || codeValue >= 48 && codeValue <= 57 || codeValue >= 96 && codeValue <= 107 || codeValue >= 109 && codeValue <= 111 || codeValue == 13 || codeValue == 187 || codeValue == 190) {
-        asignar(keyValue, codeValue);
-    }
+    /* console.log('el codigo de tecla es : '+ codeValue + " el valor de la tecla es : " + keyValue); */
+    if (codeValue == 8 || (codeValue >= 48 && codeValue <= 57) || (codeValue >= 96 && codeValue <= 107) || (codeValue >= 109 && codeValue <= 111) || (codeValue == 187 && keyValue != '=') || codeValue == 190) {
+        arrayIngreso.push(keyValue);
 
+        ingreso = ingreso + keyValue;
+        pantalla.value = ingreso;
+
+    }else if(codeValue == 13 || (codeValue == 187 && keyValue == '=')){
+        
+        arrayIngreso.push(keyValue);
+        separarYasignar(arrayIngreso);
+    }else{
+        
+    }
+    
 }, false);
 
 /* Calculadora basada en ingreso de teclado */
-function asignar(x, y) {
-    /* si presiona un numero */
-    if (y >= 48 && y <= 57 || y >= 96 && y <= 105 || y == 110) {
-        /* CONCATENO ENTRADA Y LA MUESTRO EN PANTALLA */
-        ingreso = ingreso + x;
-        pantalla.value = ingreso;
-    }
+function separarYasignar() {
+console.log(arrayIngreso);
+var numeroConcatenado = "";
+
+    arrayIngreso.forEach((element,index) => {
+
+        if(element >= 0 && element <= 9){
+            numeroConcatenado = numeroConcatenado + element;
+        }
+        if(separacion.indexOf(element)>0){
+            if(index == 0){
+                console.log('ingreso por aca')
+                numeros.push(element);
+            }
+            if (index != 0){
+                numeros.push(numeroConcatenado);
+                numeroConcatenado = "";
+                numeros.push(element);
+                vaciarInput();
+            }
+        }
+
+    });
+    operar(numeros);
+    console.log(numeros);
 }
 
+let resultado;
+function operar(){
+
+    funcionesMatematicas.forEach((funcion,index) => {
+        if(index == operacion){
+            varRespuesta = funcion(var1,var2);
+        }
+    });
+
+}
 /* Array de funciones */
 
 const funcionesMatematicas = [
@@ -40,6 +81,10 @@ const funcionesMatematicas = [
     }
 }); */
 
+
+function vaciarInput(){
+    pantalla.value = "";
+}
 
 function esImpar(x) {
     return (x % 2 == 0) ? true : false;
