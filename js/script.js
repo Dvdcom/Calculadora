@@ -57,8 +57,8 @@ function asignar(x, y) {
             if (operacion[0] > 0 && operacion[2] > 0) {
 
                 /* console.log de testeo */
-                /* console.log('num1 es = ' + operacion[0] + ' num2 es = ' + operacion[2] + ' codOperacion es = ' + operacion[1]); */
-
+                /* console.log('nporum1 es = ' + operacion[0] + ' num2 es = ' + operacion[2] + ' codOperacion es = ' + operacion[1]); */
+                si
                 /* REALIZO LA OPERACION ENTREGANDO TODO LOS 3 DATOS */ /* utilizar un arreglo para guardar funciones */
                 switch (operacion[1]) {
                     case '+':
